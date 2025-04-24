@@ -1,4 +1,9 @@
 .root {
   @include dimension(100%, 100dvh);
   @include flex($align: center, $justify:center);
+
+
+  &__component {
+    @include dimension(33%);
+  }
 }

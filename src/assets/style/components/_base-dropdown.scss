@@ -1,0 +1,36 @@
+.base-dropdown {
+
+  &__activator {
+    cursor: pointer;
+  }
+}
+
+.list {
+  @include flex($dir:column);
+  gap: space(1);
+  background-color: var(--theme-palette-surface-high);
+  border: 1px solid var(--theme-palette-outline);
+  padding: space(3);
+  border-radius: shaper(10);
+  max-height: 27rem;
+  overflow-y: auto;
+
+  &__item {
+    @include dimension(100%);
+    padding: space(2) space(3);
+    cursor: pointer;
+    border-radius: shaper(2);
+    transition: $transition-3;
+    will-change: color;
+
+    &:hover {
+      background-color: var(--theme-palette-state-0);
+
+    }
+
+    &--active {
+      background-color: var(--theme-palette-on-primary);
+      color: var(--theme-palette-primary);
+    }
+  }
+}

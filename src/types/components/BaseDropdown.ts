@@ -11,4 +11,6 @@ export interface BaseDropdownProp {
   placeholder?: string;
   noItemText?: string;
   items: Array<ItemsStructure>;
+
+  handleSelectItem?: (ItemsStructure) => void;
 }

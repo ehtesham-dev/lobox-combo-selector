@@ -2,6 +2,7 @@
 
   &__activator {
     cursor: pointer;
+    margin-bottom: space(1);
   }
 }
 
@@ -23,6 +24,7 @@
     border-radius: shaper(2);
     transition: $transition-3;
     will-change: color;
+    user-select: none;
 
     &:hover {
       background-color: var(--theme-palette-state-0);

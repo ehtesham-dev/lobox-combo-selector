@@ -1,0 +1,5 @@
+.expansion-container {
+  overflow: hidden;
+  transition: max-height $transition-3;
+  will-change: max-height;
+}

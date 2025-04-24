@@ -9,5 +9,6 @@ export interface ItemsStructure {
 export interface BaseDropdownProp {
   children?: ReactNode;
   placeholder?: string;
+  noItemText?: string;
   items: Array<ItemsStructure>;
 }

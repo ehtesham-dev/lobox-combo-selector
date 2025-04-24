@@ -1,0 +1,14 @@
+@use "../themes" as *;
+
+:root {
+  @each $theme, $pallet in $themes {
+    &[data-theme="#{$theme}"] {
+      @each $sub-pallet-name, $sub-pallet-colors in $pallet {
+        @each $key, $value in $sub-pallet-colors {
+          --theme-palette-#{$key}: #{$value};
+        }
+      }
+    }
+  }
+}
+

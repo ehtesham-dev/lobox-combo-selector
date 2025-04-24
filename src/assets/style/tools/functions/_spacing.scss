@@ -1,0 +1,5 @@
+@use "../../abstracts/index" as *;
+
+@function space($step: 1) {
+  @return calc($spacer * $step);
+}

@@ -1,0 +1,60 @@
+@use '../abstracts/_colors' as *;
+
+$dark-theme: (
+  primary: (
+    primary: map-get($primary, 200),
+    on-primary: map-get($primary, 900),
+    primary-container: map-get($surface, gray-2)
+  ),
+  text: (
+    on-primary-container: map-get($text, 50),
+    label: map-get($text, 200),
+    placeholder: map-get($text, 100),
+    on-surface: map-get($text, 50),
+  ),
+  loading: (
+    loading-light: linear-gradient(270deg, #{map-get($gradient, last-dark)} 0%, #{map-get($gradient, middle-dark)} 51.5%, #{map-get($gradient, first-dark)} 100%)
+  ),
+  state-layer: (
+    state-0: rgba(map-get($white, 0), .04),
+    state-1: rgba(map-get($white, 0), .08),
+    state-2: rgba(map-get($white, 0), .10),
+    state-3: rgba(map-get($white, 0), .12),
+  ),
+  white: (
+    disabled: map-get($black, 100),
+    on-disabled: map-get($black, 200),
+    icon: map-get($white, 600),
+  ),
+  surface: (
+    surface: map-get($surface, black),
+    surface-high: map-get($surface, gray-1),
+    surface-highest: map-get($surface, gray-2),
+  ),
+  black: (
+    outline: map-get($black, 400)
+  ),
+  error: (
+    error: map-get($error, 200),
+    on-error: map-get($error, 800),
+    error-container: map-get($error, 50),
+    on-error-container: map-get($error, 400),
+  ),
+  success: (
+    success: map-get($success, 200),
+    on-success: map-get($success, 900),
+  ),
+  warning: (
+    warning: map-get($warning, 500),
+    on-warning: map-get($warning, 900),
+  ),
+  additional: (
+    orange: map-get($additional, orange-dark),
+    green: map-get($additional, green-dark),
+    red: map-get($additional, red-dark),
+    blue: map-get($additional, blue-dark),
+    purple: map-get($additional, purple-dark),
+    yellow: map-get($additional, yellow-dark),
+    lavender: map-get($additional, lavender-dark),
+  ),
+);

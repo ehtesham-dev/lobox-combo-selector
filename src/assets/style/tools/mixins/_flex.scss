@@ -1,0 +1,13 @@
+@mixin flex($dir: row, $wrap: nowrap, $align: flex-start, $justify: flex-start, $is-inline: false) {
+  $display-type: flex;
+
+  @if ($is-inline) {
+    $display-type: inline-flex;
+  }
+
+  display: $display-type;
+  flex-direction: $dir;
+  flex-wrap: $wrap;
+  align-items: $align;
+  justify-content: $justify;
+}

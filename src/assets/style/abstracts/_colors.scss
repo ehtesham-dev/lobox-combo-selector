@@ -1,0 +1,127 @@
+$primary: (
+  40: #F4F7FC,
+  50: #E6F2FD,
+  70: #DAEDFF,
+  100: #B0D6F9,
+  200: #8AC2F7,
+  300: #54A7F3,
+  400: #3395F1,
+  500: #007BED,
+  600: #0070D8,
+  700: #0057A8,
+  800: #004482,
+  900: #003464
+);
+
+$text: (
+  50: #E6EAEE,
+  100: #B0BFC9,
+  200: #8AA0AF,
+  300: #55758B,
+  400: #345A75,
+  500: #013152,
+  600: #012D4B,
+  700: #01233A,
+  800: #011B2D,
+  900: #001522
+);
+
+$error: (
+  50: #F7E8E9,
+  100: #E5B9B9,
+  200: #D99798,
+  300: #C76768,
+  400: #BD494B,
+  500: #AC1C1E,
+  600: #9D191B,
+  700: #7A1415,
+  800: #5F0F11,
+  900: #480C0D
+);
+
+$warning: (
+  50: #FFF9E6,
+  100: #FFEEB0,
+  200: #FFE58A,
+  300: #FFD954,
+  400: #FFD233,
+  500: #FFC700,
+  600: #E8B500,
+  700: #B58D00,
+  800: #8C6D00,
+  900: #6B5400
+);
+
+$success: (
+  50: #EBF4E6,
+  100: #C2DCB1,
+  200: #A4CB8C,
+  300: #7BB357,
+  400: #61A536,
+  500: #3A8E04,
+  600: #358104,
+  700: #296503,
+  800: #204E02,
+  900: #183C02
+);
+
+$white: (
+  0: #FFFFFF,
+  50: #FEFEFF,
+  100: #FCFDFE,
+  200: #FAFBFE,
+  300: #F8FAFD,
+  400: #F6F9FD,
+  500: #F4F7FC,
+  600: #DEE1E5,
+  700: #ADAFB3,
+  800: #86888B,
+  900: #66686A
+);
+
+$black: (
+  50: #E8E8E9,
+  100: #B8B8BA,
+  200: #969698,
+  300: #666669,
+  400: #49494C,
+  500: #1B1B1F,
+  600: #19191C,
+  700: #131316,
+  800: #0F0F11,
+  900: #0B0B0D,
+  1000: #000000
+);
+
+$gradient: (
+  first-light: #E9E9EA,
+  middle-light: #EDEDED,
+  last-light: #F4F5F6,
+  first-dark: #1B2129,
+  middle-dark: #222A33,
+  last-dark: #2A333E,
+);
+
+$surface: (
+  white: #F7F8FA,
+  black: #0D1116,
+  gray-1: #161C23,
+  gray-2: #232C36,
+);
+
+$additional: (
+  orange-light: #F0960E,
+  orange-dark: #FEB13D,
+  green-light: #65B526,
+  green-dark: #A8CC16,
+  red-light: #E7430F,
+  red-dark: #FF6565,
+  blue-light: #3CB8CF,
+  blue-dark: #A9D4FD,
+  purple-light: #863AC2,
+  purple-dark: #FFAEED,
+  yellow-light: #E0C019,
+  yellow-dark: #FFE24B,
+  lavender-light: #4588F5,
+  lavender-dark: #A0A9FF,
+)

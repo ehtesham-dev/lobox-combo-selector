@@ -1,0 +1,9 @@
+@use "../../abstracts/index" as *;
+
+@mixin elevation($depth-level: 1) {
+  @each $theme, $depths in $elevation {
+    :root[data-theme="#{$theme}"] & {
+      box-shadow:  map-get($depths, $depth-level);
+    }
+  }
+}

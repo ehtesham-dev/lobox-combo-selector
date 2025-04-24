@@ -1,0 +1,31 @@
+@use "../../abstracts/index" as *;
+@use "./media-queries" as *;
+
+@mixin typography($name: body1) {
+  @each $size in $breakpoints-list {
+    @include mq($size) {
+      $target: map-get($typography, $size);
+
+      @if $target {
+        $level: map-get($target, $name);
+
+        @if $level {
+          font-size: map-get($level, font-size);
+          font-weight: map-get($level, font-weight);
+          line-height: map-get($level, line-height);
+          letter-spacing: map-get($level, letter-spacing);
+        }
+      } @else {
+        $target: map-get($typography, default);
+        $level: map-get($target, $name);
+
+        @if $level {
+          font-size: map-get($level, font-size);
+          font-weight: map-get($level, font-weight);
+          line-height: map-get($level, line-height);
+          letter-spacing: map-get($level, letter-spacing);
+        }
+      }
+    }
+  }
+}

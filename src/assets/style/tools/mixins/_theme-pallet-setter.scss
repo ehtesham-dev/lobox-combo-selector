@@ -1,0 +1,15 @@
+@use "../../themes/index" as *;
+
+@mixin theme-pallet-setter($name, $property: background-color) {
+  @each $theme, $pallet in $themes {
+    :root[data-theme="#{$theme}"] & {
+      @each $sub-pallet-name, $sub-pallet-colors in $pallet {
+        @each $key, $value in $sub-pallet-colors {
+          @if ($key == $name) {
+            #{$property}: $value;
+          }
+        }
+      }
+    }
+  }
+}

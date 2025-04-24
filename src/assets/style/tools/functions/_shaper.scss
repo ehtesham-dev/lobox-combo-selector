@@ -1,0 +1,11 @@
+@use "../../abstracts/index" as *;
+
+@function shaper($multiplier: 1, $is-pill: false, $is-circle: false) {
+  @if ($is-pill == true) {
+    @return $pill
+  }
+  @if ($is-circle == true) {
+    @return $circle;
+  }
+  @return calc($border-radius-root * $multiplier);
+}

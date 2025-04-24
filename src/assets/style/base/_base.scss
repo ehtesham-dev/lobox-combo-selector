@@ -1,0 +1,22 @@
+@use "../abstracts" as *;
+@use "../tools" as *;
+@use "../objects" as *;
+
+html {
+  height: 100%;
+  font-size: 10px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-palette-surface);
+  color: var(--theme-palette-on-primary-container);
+  font-family: $ff-primary, $ff-secondary, sans-serif;
+}
+
+body {
+  @include typography("body1");
+  @extend %hide-scrollbar;
+}
+
+p {
+  white-space: pre-line;
+}

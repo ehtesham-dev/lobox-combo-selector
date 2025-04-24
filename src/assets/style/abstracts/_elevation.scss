@@ -1,0 +1,28 @@
+@use '../abstracts/_colors' as *;
+
+$base-elevation-colors: (
+  light: (
+    1: rgba(map-get($black, 1000), 0.1),
+    2: rgba(map-get($black, 1000), 0.05)
+  ),
+  dark:(
+    1: rgba(map-get($black, 1000), 0.25),
+    2: rgba(map-get($black, 1000), 0.2)
+  )
+);
+
+$elevation: (
+  light: (
+    1: (2px 2px 5px -1px #{map-get($base-elevation-colors, light, 1)}, -1px -1px 5px 0px #{map-get($base-elevation-colors, light, 1)}),
+    2: (1px 3px 7px 0px #{map-get($base-elevation-colors, light, 2)}, -1px 0px 7px 0px #{map-get($base-elevation-colors, light, 2)}),
+    3: (4px 6px 10px 0px #{map-get($base-elevation-colors, light, 2)}),
+    4: (8px 8px 10px 0px #{map-get($base-elevation-colors, light, 2)}),
+  ),
+  dark:(
+    1: (-1px -1px 5px -1px #{map-get($base-elevation-colors, dark, 1)}, 2px 2px 5px 0px #{map-get($base-elevation-colors, dark, 1)}),
+    2: (1px 3px 7px 0px #{map-get($base-elevation-colors, dark, 2)}, -1px 0px 7px 0px #{map-get($base-elevation-colors, dark, 2)}),
+    3: (4px 6px 10px 0px #{map-get($base-elevation-colors, dark, 2)}),
+    4: (8px 8px 10px 0px #{map-get($base-elevation-colors, dark, 2)}),
+  )
+)
+

@@ -3,6 +3,7 @@ import { useState } from "react";
 import * as React from "react";
 import { BaseDropdownProp } from "@/types/components/BaseDropdown.ts";
 import "@/assets/style/components/_base-dropdown.scss";
+import TickIcon from "@/assets/icons/tick-square.svg?react";
 
 export const BaseDropdown: React.FC<BaseDropdownProp> = ({ children, placeholder = "See Items", items }) => {
   const [isDropDownVisible, setDropDownVisibility] = useState(true);
@@ -11,7 +12,7 @@ export const BaseDropdown: React.FC<BaseDropdownProp> = ({ children, placeholder
     setDropDownVisibility((value) => !value);
   };
 
-  const isSelectedItem = (item) => (item.isActive ? "list__item--active" : "");
+  const isActiveItem = (item) => (item.isActive ? "list__item--active" : "");
 
   return (
     <div className="base-dropdown">
@@ -21,8 +22,9 @@ export const BaseDropdown: React.FC<BaseDropdownProp> = ({ children, placeholder
       <ExpansionContainer isExpand={isDropDownVisible}>
         <ul className="dropdown__list list">
           {items.map((item) => (
-            <li className={`list__item ${isSelectedItem(item)}`} key={item.value}>
-              {item.label}
+            <li className={`list__item ${isActiveItem(item)}`} key={item.value}>
+              <span className="list__item-name">{item.label}</span>
+              {isActiveItem(item) && <TickIcon className="list__item-icon" />}
             </li>
           ))}
         </ul>

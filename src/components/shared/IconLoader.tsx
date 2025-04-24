@@ -1,6 +1,6 @@
 import * as React from "react";
 import "@/assets/style/components/_icon-loader.scss";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IconLoaderProp } from "@/types/components/IconLoader.ts";
 
 export const IconLoader: React.FC<IconLoaderProp> = ({ name }) => {
@@ -17,10 +17,12 @@ export const IconLoader: React.FC<IconLoaderProp> = ({ name }) => {
     setSanitizedName(toKebabCase(name));
   }, [name]);
 
-  const Icon = React.lazy(() => import(`@/assets/icons/${sanitizedName}.svg?react`));
-
+  const Icon = useMemo(
+    () => React.lazy(() => import(`@/assets/icons/${sanitizedName}.svg?react`)),
+    [sanitizedName],
+  );
   return (
-    <React.Suspense fallback={<span className="icon--loading" />}>
+    <React.Suspense>
       <div className="icon">
         <Icon className="icon__svg" />
       </div>

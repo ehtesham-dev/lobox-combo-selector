@@ -1,13 +1,13 @@
-import * as React from "react";
+import { ReactNode } from "react";
 
-interface ItemsStructure {
+export interface ItemsStructure {
   label: string;
   value: any;
-  isActive: boolean;
+  isActive?: boolean;
 }
 
 export interface BaseDropdownProp {
-  children?: React.ReactNode;
+  children?: ReactNode;
   placeholder?: string;
   items: Array<ItemsStructure>;
 }

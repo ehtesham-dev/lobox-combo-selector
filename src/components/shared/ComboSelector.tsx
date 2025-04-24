@@ -16,18 +16,35 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
 
   useEffect(() => {
     prepareDropDownItems();
-  }, [items, selectedItems]);
+  }, [searchKey, items, selectedItems]);
 
   useEffect(() => {
     handleSelectedItemsUpdate(selectedItems);
   }, [selectedItems]);
+
+  const filterDropDownItems = (items: ItemsStructure[]): ItemsStructure[] => {
+    if (!searchKey.trim()) return items;
+
+    const pattern = searchKey
+      .trim()
+      .toLowerCase()
+      .split("")
+      .map((char) => char.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")) // escape regex chars
+      .join(".*");
+
+    const regex = new RegExp(pattern, "i");
+
+    return items.filter((item) => regex.test(item.label));
+  };
 
   const prepareDropDownItems = () => {
     const preparedItems = items.map((item) => {
       return selectedItems.includes(item.value) ? { ...item, isActive: true } : item;
     });
 
-    setDropdownItems(preparedItems);
+    const filteredSearchKeywordItems = filterDropDownItems(preparedItems);
+
+    setDropdownItems(filteredSearchKeywordItems);
   };
 
   const handleSingleTypeSelection = (item: ItemsStructure) => {

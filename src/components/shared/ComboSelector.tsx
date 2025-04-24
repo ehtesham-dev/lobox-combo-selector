@@ -5,7 +5,11 @@ import { ChangeEvent, useEffect, useState } from "react";
 import * as React from "react";
 import { ComboSelectProp } from "@/types/components/ComboSelector.ts";
 
-export const ComboSelector: React.FC<ComboSelectProp> = ({ items = [], selectionType = "multi" }) => {
+export const ComboSelector: React.FC<ComboSelectProp> = ({
+  items = [],
+  selectionType = "multi",
+  handleSelectedItemsUpdate = () => {},
+}) => {
   const [searchKey, setSearchKey] = useState("");
   const [selectedItems, setSelectedItems] = useState<Array<ItemsStructure>>([]);
   const [dropdownItems, setDropdownItems] = useState<Array<ItemsStructure>>([]);
@@ -13,6 +17,10 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({ items = [], selection
   useEffect(() => {
     prepareDropDownItems();
   }, [items, selectedItems]);
+
+  useEffect(() => {
+    handleSelectedItemsUpdate(selectedItems);
+  }, [selectedItems]);
 
   const prepareDropDownItems = () => {
     const preparedItems = items.map((item) => {

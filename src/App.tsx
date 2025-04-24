@@ -2,8 +2,10 @@ import "@/assets/style/pages/_root.scss";
 import { ComboSelector } from "@/components/shared/ComboSelector.tsx";
 import * as React from "react";
 import { ItemsStructure } from "@/types/components/BaseDropdown.ts";
+import { useState } from "react";
 
 export const App: React.FC = () => {
+  const [selectedItems, setSelectedItems] = useState<Array<ItemsStructure>>([]);
   const items: Array<ItemsStructure> = [
     { label: "Education 🎓", value: "education" },
     { label: "Yeeeah, science! 🧪", value: "science" },
@@ -21,9 +23,9 @@ export const App: React.FC = () => {
 
   return (
     <main className="root">
-      <div className="root_top"></div>
+      <div className="root_top">Selected items : {selectedItems.join(", ")}</div>
       <div className="root__component">
-        <ComboSelector items={items} />
+        <ComboSelector items={items} handleSelectedItemsUpdate={setSelectedItems} />
       </div>
     </main>
   );

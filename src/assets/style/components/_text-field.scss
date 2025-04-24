@@ -1,0 +1,25 @@
+$root: text-field;
+
+.#{$root} {
+  @include dimension(100%, 5rem);
+  @include flex($align: center);
+  gap: space(3);
+  padding: space(2) space(4);
+  border-radius: shaper(6);
+  background-color: var(--theme-palette-surface-high);
+  border: 1px solid var(--theme-palette-outline);
+  transition: $transition-3;
+
+  &:focus-within {
+    @include elevation($depth-level:1);
+    border-color: var(--theme-palette-primary);
+  }
+
+  &__field {
+    @include dimension(100%);
+  }
+
+  &__append-icon {
+    margin-left: auto;
+  }
+}

@@ -1,9 +1,10 @@
 import { ExpansionContainer } from "@/components/shared/ExpansionContainer.tsx";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as React from "react";
 import { BaseDropdownProp } from "@/types/components/BaseDropdown.ts";
 import "@/assets/style/components/_base-dropdown.scss";
 import { IconLoader } from "@/components/shared/IconLoader.tsx";
+import { useClickOutside } from "@/hooks/useClickOutside.ts";
 
 export const BaseDropdown: React.FC<BaseDropdownProp> = ({
   children,
@@ -13,16 +14,15 @@ export const BaseDropdown: React.FC<BaseDropdownProp> = ({
   handleSelectItem = () => {},
 }) => {
   const [isDropDownVisible, setDropDownVisibility] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const ToggleDropDownVisibility = () => {
-    setDropDownVisibility(true);
-  };
+  useClickOutside(dropdownRef, () => setDropDownVisibility(false));
 
   const isActiveItem = (item) => (item.isActive ? "list__item--active" : "");
 
   return (
-    <div className="base-dropdown">
-      <div className="base-dropdown__activator" onClick={ToggleDropDownVisibility}>
+    <div className="base-dropdown" ref={dropdownRef}>
+      <div className="base-dropdown__activator" onClick={() => setDropDownVisibility(true)}>
         {children ?? <span>{placeholder}</span>}
       </div>
       <ExpansionContainer isExpand={isDropDownVisible}>

@@ -1,5 +1,4 @@
 $ff-primary: Poppins;
-$ff-secondary: Yekanbahk;
 
 $font-url: "@/assets/fonts";
 
@@ -29,28 +28,6 @@ $font-faces: (
       font-style: normal,
       font-weight: 400,
       src: url("#{$font-url}/ttf/PoppinsLatin-Regular.ttf"),
-    ),
-  ),
-  $ff-secondary: (
-    extra-bold: (
-      font-style: normal,
-      font-weight: 800,
-      src: url("#{$font-url}/ttf/YekanBakh-ExtraBold.ttf"),
-    ),
-    bold: (
-      font-style: normal,
-      font-weight: 700,
-      src: url("#{$font-url}/ttf/YekanBakh-Bold.ttf"),
-    ),
-    semi-bold: (
-      font-style: normal,
-      font-weight: 600,
-      src: url("#{$font-url}/ttf/YekanBakh-SemiBold.ttf"),
-    ),
-    regular: (
-      font-style: normal,
-      font-weight: 400,
-      src: url("#{$font-url}/ttf/YekanBakh-Regular.ttf"),
     ),
   ),
 );

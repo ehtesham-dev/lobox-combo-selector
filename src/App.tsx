@@ -1,7 +1,9 @@
+import "./assets/style/pages/_root.scss";
+
 function App() {
   return (
     <>
-      <main className="root"></main>
+      <main className="root">Education</main>
     </>
   );
 }

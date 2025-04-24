@@ -9,7 +9,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--theme-palette-surface);
   color: var(--theme-palette-on-primary-container);
-  font-family: $ff-primary, $ff-secondary, sans-serif;
+  font-family: $ff-primary, sans-serif;
 }
 
 body {
@@ -17,6 +17,3 @@ body {
   @extend %hide-scrollbar;
 }
 
-p {
-  white-space: pre-line;
-}

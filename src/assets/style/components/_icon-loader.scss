@@ -1,0 +1,7 @@
+.icon {
+  @include flex($align: center, $justify: center);
+
+  &__svg {
+    @include dimension(100%, 100%);
+  }
+}

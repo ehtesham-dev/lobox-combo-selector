@@ -7,16 +7,19 @@ import { ComboSelectProp } from "@/types/components/ComboSelector.ts";
 
 export const ComboSelector: React.FC<ComboSelectProp> = ({
   items = [],
+  name,
+  placeholder = "Select from items",
   selectionType = "multi",
   handleSelectedItemsUpdate = () => {},
 }) => {
   const [searchKey, setSearchKey] = useState("");
   const [selectedItems, setSelectedItems] = useState<Array<ItemsStructure>>([]);
   const [dropdownItems, setDropdownItems] = useState<Array<ItemsStructure>>([]);
+  const [additionalItems, setAdditionalItems] = useState<Array<ItemsStructure>>([]);
 
   useEffect(() => {
     prepareDropDownItems();
-  }, [searchKey, items, selectedItems]);
+  }, [searchKey, items, selectedItems, additionalItems]);
 
   useEffect(() => {
     handleSelectedItemsUpdate(selectedItems);
@@ -29,7 +32,7 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
       .trim()
       .toLowerCase()
       .split("")
-      .map((char) => char.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&")) // escape regex chars
+      .map((char) => char.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"))
       .join(".*");
 
     const regex = new RegExp(pattern, "i");
@@ -38,7 +41,8 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
   };
 
   const prepareDropDownItems = () => {
-    const preparedItems = items.map((item) => {
+    const aggregatedItems = [...items, ...additionalItems];
+    const preparedItems = aggregatedItems.map((item) => {
       return selectedItems.includes(item.value) ? { ...item, isActive: true } : item;
     });
 
@@ -65,21 +69,35 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
     setSelectedItems((prev) => [...prev, item.value]);
   };
 
+  const addAdditionalItem = () => {
+    const aggregatedItems = [...items, ...additionalItems];
+
+    if (aggregatedItems.find((item: ItemsStructure) => item.label === searchKey || item.value === searchKey))
+      return;
+
+    const targetItem: ItemsStructure = { label: searchKey, value: searchKey };
+    setAdditionalItems((perv) => [...perv, targetItem]);
+
+    handleSelectItem(targetItem);
+  };
+
   const handleSelectItem = (item: ItemsStructure) => {
     selectionType === "single" ? handleSingleTypeSelection(item) : handleMultiTypeSelection(item);
   };
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchKey(event.target.value);
   };
 
   return (
     <BaseDropdown items={dropdownItems} handleSelectItem={handleSelectItem}>
       <TextField
-        name="random"
+        model={searchKey}
+        name={name}
         appendIcon="arrow-down"
-        placeholder="Select From Subjects"
-        onInputHandler={handleInputChange}
+        placeholder={placeholder}
+        onInputHandler={handleSearchChange}
+        onEnterHandler={addAdditionalItem}
       />
     </BaseDropdown>
   );

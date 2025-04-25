@@ -21,3 +21,5 @@ This is a React + TypeScript project featuring a reusable multi-select dropdown 
 - [SCSS](https://sass-lang.com/)
 
 ---
+
+![LOBOX COMBO SELECT SCREEN SHOT](./src/assets/images/readme-screen.png)

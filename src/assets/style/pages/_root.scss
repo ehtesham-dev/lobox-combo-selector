@@ -3,10 +3,18 @@
   @include flex($dir: column, $justify:space-around,$align:center);
   margin: 0 auto;
 
+  @include mq('small') {
+    @include dimension(80%, 100dvh);
+  }
+
   &__intro {
     @include flex($dir: column, $align:center);
     @include dimension(100%);
     gap: space(4);
+
+    @include mq('small') {
+      text-align: center;
+    }
   }
 
   &__logo {

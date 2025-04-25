@@ -23,9 +23,17 @@ export const App: React.FC = () => {
 
   return (
     <main className="root">
-      <div className="root_top">Selected items : {selectedItems.join(", ")}</div>
+      <div className="root__intro">
+        <img className="root__logo" src="/lobox-icon.png" alt="lobox-logo" />
+        <h5 className="root__title">Tnx for opportunity LOBOX 💙</h5>
+      </div>
       <div className="root__component">
-        <ComboSelector items={items} handleSelectedItemsUpdate={setSelectedItems} />
+        <div className="root__top">Selected items : {selectedItems.join(", ")}</div>
+        <ComboSelector
+          items={items}
+          handleSelectedItemsUpdate={setSelectedItems}
+          name="Sample-combo-selector"
+        />
       </div>
     </main>
   );

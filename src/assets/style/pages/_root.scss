@@ -1,14 +1,29 @@
 .root {
-  @include dimension(50%, 100dvh);
-  @include flex($dir: column, $justify:center);
+  @include dimension(50%, 80dvh);
+  @include flex($dir: column, $justify:space-around,$align:center);
   margin: 0 auto;
 
-  &__top {
-    text-align: left;
-    @include dimension(100%)
+  &__intro {
+    @include flex($dir: column, $align:center);
+    @include dimension(100%);
+    gap: space(4);
+  }
+
+  &__logo {
+    @include dimension(10rem, 10rem)
+  }
+
+  &__title {
+    @include typography(h4);
   }
 
   &__component {
     @include dimension(100%);
+    @include flex($dir: column);
+    gap: space(3);
+  }
+
+  &__bottom {
+    @include dimension(100%)
   }
 }

@@ -1,7 +1,7 @@
 import { BaseDropdown } from "@/components/shared/BaseDropdown.tsx";
 import { ItemsStructure } from "@/types/components/BaseDropdown.ts";
 import { TextField } from "@/components/shared/TextField.tsx";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import * as React from "react";
 import { ComboSelectProp } from "@/types/components/ComboSelector.ts";
 import "@/assets/style/components/_combo-selector.scss";
@@ -19,12 +19,8 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
   const [additionalItems, setAdditionalItems] = useState<Array<ItemsStructure>>([]);
 
   useEffect(() => {
-    prepareDropDownItems();
-  }, [searchKey, items, selectedItems, additionalItems]);
-
-  useEffect(() => {
     handleSelectedItemsUpdate(selectedItems);
-  }, [selectedItems]);
+  }, [selectedItems, handleSelectedItemsUpdate]);
 
   const filterDropDownItems = (items: ItemsStructure[]): ItemsStructure[] => {
     if (!searchKey.trim()) return items;
@@ -41,7 +37,7 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
     return items.filter((item) => regex.test(item.label));
   };
 
-  const prepareDropDownItems = () => {
+  const prepareDropDownItems = useCallback(() => {
     const aggregatedItems = [...items, ...additionalItems];
     const preparedItems = aggregatedItems.map((item) => {
       return selectedItems.includes(item.value) ? { ...item, isActive: true } : item;
@@ -50,7 +46,11 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
     const filteredSearchKeywordItems = filterDropDownItems(preparedItems);
 
     setDropdownItems(filteredSearchKeywordItems);
-  };
+  }, [searchKey, items, selectedItems, additionalItems]);
+
+  useEffect(() => {
+    prepareDropDownItems();
+  }, [prepareDropDownItems]);
 
   const handleSingleTypeSelection = (item: ItemsStructure) => {
     if (selectedItems.includes(item.value)) {
@@ -82,9 +82,8 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
     handleSelectItem(targetItem);
   };
 
-  const handleSelectItem = (item: ItemsStructure) => {
+  const handleSelectItem = (item: ItemsStructure) =>
     selectionType === "single" ? handleSingleTypeSelection(item) : handleMultiTypeSelection(item);
-  };
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchKey(event.target.value);

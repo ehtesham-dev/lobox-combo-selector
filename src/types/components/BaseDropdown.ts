@@ -12,5 +12,5 @@ export interface BaseDropdownProp {
   noItemText?: string;
   items: Array<ItemsStructure>;
 
-  handleSelectItem?: (ItemsStructure) => void;
+  handleSelectItem?: (item: ItemsStructure) => void;
 }

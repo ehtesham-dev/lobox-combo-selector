@@ -4,6 +4,7 @@ import { TextField } from "@/components/shared/TextField.tsx";
 import { ChangeEvent, useEffect, useState } from "react";
 import * as React from "react";
 import { ComboSelectProp } from "@/types/components/ComboSelector.ts";
+import "@/assets/style/components/_combo-selector.scss";
 
 export const ComboSelector: React.FC<ComboSelectProp> = ({
   items = [],
@@ -90,15 +91,17 @@ export const ComboSelector: React.FC<ComboSelectProp> = ({
   };
 
   return (
-    <BaseDropdown items={dropdownItems} handleSelectItem={handleSelectItem}>
-      <TextField
-        model={searchKey}
-        name={name}
-        appendIcon="arrow-down"
-        placeholder={placeholder}
-        onInputHandler={handleSearchChange}
-        onEnterHandler={addAdditionalItem}
-      />
-    </BaseDropdown>
+    <div className="combo-selector">
+      <BaseDropdown items={dropdownItems} handleSelectItem={handleSelectItem}>
+        <TextField
+          model={searchKey}
+          name={name}
+          appendIcon="arrow-down"
+          placeholder={placeholder}
+          onInputHandler={handleSearchChange}
+          onEnterHandler={addAdditionalItem}
+        />
+      </BaseDropdown>
+    </div>
   );
 };

@@ -1,4 +1,4 @@
-import { fileURLToPath } from "node:url";
+import { resolve } from "path";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import svgr from "vite-plugin-svgr";
@@ -7,7 +7,7 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      "@": resolve(__dirname, "src"),
     },
   },
   css: {

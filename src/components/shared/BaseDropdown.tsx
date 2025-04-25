@@ -1,7 +1,7 @@
 import { ExpansionContainer } from "@/components/shared/ExpansionContainer.tsx";
 import { useRef, useState } from "react";
 import * as React from "react";
-import { BaseDropdownProp } from "@/types/components/BaseDropdown.ts";
+import { BaseDropdownProp, ItemsStructure } from "@/types/components/BaseDropdown.ts";
 import "@/assets/style/components/_base-dropdown.scss";
 import { IconLoader } from "@/components/shared/IconLoader.tsx";
 import { useClickOutside } from "@/hooks/useClickOutside.ts";
@@ -18,7 +18,7 @@ export const BaseDropdown: React.FC<BaseDropdownProp> = ({
 
   useClickOutside(dropdownRef, () => setDropDownVisibility(false));
 
-  const isActiveItem = (item) => (item.isActive ? "list__item--active" : "");
+  const isActiveItem = (item: ItemsStructure) => (item.isActive ? "list__item--active" : "");
 
   return (
     <div className="base-dropdown" ref={dropdownRef}>

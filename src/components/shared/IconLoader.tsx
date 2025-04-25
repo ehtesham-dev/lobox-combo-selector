@@ -3,7 +3,7 @@ import "@/assets/style/components/_icon-loader.scss";
 import { useEffect, useMemo, useState } from "react";
 import { IconLoaderProp } from "@/types/components/IconLoader.ts";
 
-export const IconLoader: React.FC<IconLoaderProp> = ({ name }) => {
+export const IconLoader: React.FC<IconLoaderProp> = ({ name, className }) => {
   const [sanitizedName, setSanitizedName] = useState("");
 
   const toKebabCase = (target: string): string =>
@@ -22,9 +22,9 @@ export const IconLoader: React.FC<IconLoaderProp> = ({ name }) => {
     [sanitizedName],
   );
   return (
-    <React.Suspense>
+    <React.Suspense fallback={<span />}>
       <div className="icon">
-        <Icon className="icon__svg" />
+        <Icon className={`icon__svg ${className ?? ""}`} />
       </div>
     </React.Suspense>
   );

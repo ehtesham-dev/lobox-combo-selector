@@ -21,11 +21,7 @@ export const TextField: React.FC<TextFieldProps> = ({
 
   return (
     <div className="text-field">
-      {prependIcon && (
-        <IconLoader name={prependIcon} className="text-field__prepend-icon">
-          {prependIcon}
-        </IconLoader>
-      )}
+      {prependIcon && <IconLoader name={prependIcon} className="text-field__prepend-icon" />}
       <input
         id={name}
         value={model}
@@ -35,11 +31,7 @@ export const TextField: React.FC<TextFieldProps> = ({
         onInput={onInputHandler}
         onKeyUp={handleEnterKeyUp}
       />
-      {appendIcon && (
-        <IconLoader name={appendIcon} className="text-field__append-icon">
-          {appendIcon}
-        </IconLoader>
-      )}
+      {appendIcon && <IconLoader name={appendIcon} className="text-field__append-icon" />}
     </div>
   );
 };
